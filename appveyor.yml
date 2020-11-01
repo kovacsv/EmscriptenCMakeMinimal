@@ -1,0 +1,36 @@
+version: "{build}"
+
+clone_folder: c:\projects\EmscriptenCMakeMinimal
+
+image:
+  - Visual Studio 2017
+
+configuration:
+  - Debug
+  - Release
+
+platform:
+  - x64
+
+before_build:
+  - mkdir Build
+  - cd Build
+  - cmake -G "Visual Studio 15 2017 Win64" ..
+  - cd ..
+
+build:
+  project: c:\projects\EmscriptenCMakeMinimal\Build\EmscriptenCMakeMinimal.sln
+  verbosity: minimal
+
+after_build:
+  - git clone https://github.com/emscripten-core/emsdk.git
+  - cd emsdk
+  - git pull
+  - git checkout tags/2.0.5
+  - emsdk install 2.0.5
+  - emsdk activate 2.0.5
+  - emsdk install mingw-4.6.2-32bit
+  - emsdk activate mingw-4.6.2-32bit
+  - cd ..
+  - mkdir WebApp
+  - EmscriptenBuild.bat c:\projects\EmscriptenCMakeMinimal\emsdk c:\projects\EmscriptenCMakeMinimal\WebApp %configuration%
