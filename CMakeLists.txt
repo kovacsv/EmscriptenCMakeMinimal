@@ -8,7 +8,7 @@ set (CMAKE_DEBUG_POSTFIX "Debug")
 
 add_definitions (-DUNICODE -D_UNICODE)
 
-project (EmscriptenCMake)
+project (EmscriptenCMakeMinimal)
 
 # WebApp
 
