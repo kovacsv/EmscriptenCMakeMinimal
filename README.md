@@ -1,8 +1,8 @@
 # Emscripten CMake Minimal
 
-[![Build status](https://ci.appveyor.com/api/projects/status/nwgrvu5xdvp3eej4?svg=true)](https://ci.appveyor.com/project/kovacsv/emscriptencmakeminimal)
-
 A minimalist example to build an [Emscripten](https://emscripten.org) application with CMake.
+
+[![Build status](https://ci.appveyor.com/api/projects/status/nwgrvu5xdvp3eej4?svg=true)](https://ci.appveyor.com/project/kovacsv/emscriptencmakeminimal)
 
 ## Building on Windows
 
