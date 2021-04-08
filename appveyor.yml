@@ -4,6 +4,7 @@ clone_folder: c:\projects\EmscriptenCMakeMinimal
 
 image:
   - Visual Studio 2017
+  - Visual Studio 2019
 
 configuration:
   - Debug
