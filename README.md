@@ -43,7 +43,7 @@ The easiest way is to run the `EmscriptenBuild.bat` file from the root directory
 - The build configuration type (Debug or Release).
 
 ```
-EmscriptenBuild.bat C:\Emscripten\emsdk Release
+EmscriptenBuild.bat C:\Emscripten\emsdk Debug
 ```
 
 ### 5. Open it in a Web Browser
@@ -51,4 +51,4 @@ EmscriptenBuild.bat C:\Emscripten\emsdk Release
 - Start a web server in the root directory.
   - With Python 3: `python -m http.server 8000`.
   - On Windows just run the `StartServerWin.bat` script.
-- Open your browser, and navigate to: `http://localhost:8000/BuildEm/WebSite.html`
+- Open your browser, and navigate to: `http://localhost:8000/BuildEm/Debug`.
