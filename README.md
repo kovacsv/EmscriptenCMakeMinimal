@@ -51,4 +51,4 @@ EmscriptenBuild.bat C:\Emscripten\emsdk Debug
 - Start a web server in the root directory.
   - With Python 3: `python -m http.server 8000`.
   - On Windows just run the `StartServerWin.bat` script.
-- Open your browser, and navigate to: `http://localhost:8000/BuildEm/Debug`.
+- Open your browser, and navigate to: `http://localhost:8000/BuildEm`.
