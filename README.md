@@ -32,22 +32,23 @@ You can create the project with CMake, and build it with Visual Studio. This ste
 ```
 mkdir Build
 cd Build
-cmake -G "Visual Studio 15 2017 Win64" ..
+cmake -G "Visual Studio 16 2019" -A "Win32" ..
 cd ..
 ```
 
 ### 4. Generate the Web Application
 
-The easiest way is to run the `EmscriptenBuild.bat` file from the root directory. It needs three command line parameters:
+The easiest way is to run the `EmscriptenBuild.bat` file from the root directory. It needs two command line parameters:
 - The Emscripten SDK folder (e.g. "C:\Emscripten\emsdk").
-- The result folder of the web application (e.g. "C:\xampp\htdocs\WebApp").
 - The build configuration type (Debug or Release).
 
 ```
-EmscriptenBuild.bat C:\Emscripten\emsdk C:\xampp\htdocs\WebApp Release
+EmscriptenBuild.bat C:\Emscripten\emsdk Release
 ```
 
 ### 5. Open it in a Web Browser
 
-- Set up a web server for the result folder.
-- Open it in a web browser.
+- Start a web server in the root directory.
+  - With Python 3: `python -m http.server 8000`.
+  - On Windows just run the `StartServerWin.bat` script.
+- Open your browser, and navigate to: `http://localhost:8000/BuildEm/WebSite.html`

@@ -36,3 +36,12 @@ if (WIN32)
 else ()
 	target_compile_options (WebApp PUBLIC -Wall -Wextra -Werror)
 endif ()
+
+# WebSite
+
+set (WebSiteSourcesFolder Sources/WebSite)
+
+get_filename_component (WebSiteSourcesFolderFullPath "${WebSiteSourcesFolder}" ABSOLUTE)
+add_custom_command (TARGET WebApp POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy_directory "${WebSiteSourcesFolderFullPath}" $<TARGET_FILE_DIR:WebApp>
+)

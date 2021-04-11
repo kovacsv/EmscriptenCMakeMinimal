@@ -37,5 +37,4 @@ after_build:
   - emsdk install mingw-4.6.2-32bit
   - emsdk activate mingw-4.6.2-32bit
   - cd ..
-  - mkdir WebApp
-  - EmscriptenBuild.bat c:\projects\EmscriptenCMakeMinimal\emsdk c:\projects\EmscriptenCMakeMinimal\WebApp %configuration%
+  - EmscriptenBuild.bat c:\projects\EmscriptenCMakeMinimal\emsdk %configuration%
