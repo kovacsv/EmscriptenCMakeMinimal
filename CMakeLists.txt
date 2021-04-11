@@ -24,13 +24,18 @@ set (
 )
 
 add_executable (WebApp ${WebAppFiles})
-target_compile_options (WebApp PUBLIC "$<$<CONFIG:Debug>:-DDEBUG>")
 if (${EMSCRIPTEN})
 	set_target_properties (WebApp PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}")
 	target_link_options (WebApp PUBLIC "-sEXPORTED_FUNCTIONS=[\"_main\", \"_MeaningOfLife\"]")
 	target_link_options (WebApp PUBLIC "-sEXTRA_EXPORTED_RUNTIME_METHODS=[\"ccall\", \"cwrap\"]")
 	target_link_options (WebApp PUBLIC -sALLOW_MEMORY_GROWTH=1 --no-heap-copy)
+	set (WebSiteSourcesFolder Sources/WebSite)
+	get_filename_component (WebSiteSourcesFolderFullPath "${WebSiteSourcesFolder}" ABSOLUTE)
+	add_custom_command (TARGET WebApp POST_BUILD
+		COMMAND ${CMAKE_COMMAND} -E copy_directory "${WebSiteSourcesFolderFullPath}" $<TARGET_FILE_DIR:WebApp>
+	)
 else ()
+	target_compile_options (WebApp PUBLIC "$<$<CONFIG:Debug>:-DDEBUG>")
 	set_target_properties (WebApp PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>")
 endif ()
 if (WIN32)
@@ -38,12 +43,3 @@ if (WIN32)
 else ()
 	target_compile_options (WebApp PUBLIC -Wall -Wextra -Werror)
 endif ()
-
-# WebSite
-
-set (WebSiteSourcesFolder Sources/WebSite)
-
-get_filename_component (WebSiteSourcesFolderFullPath "${WebSiteSourcesFolder}" ABSOLUTE)
-add_custom_command (TARGET WebApp POST_BUILD
-	COMMAND ${CMAKE_COMMAND} -E copy_directory "${WebSiteSourcesFolderFullPath}" $<TARGET_FILE_DIR:WebApp>
-)
