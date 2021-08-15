@@ -37,4 +37,4 @@ after_build:
   - emsdk install mingw-4.6.2-32bit
   - emsdk activate mingw-4.6.2-32bit
   - cd ..
-  - EmscriptenBuild.bat c:\projects\EmscriptenCMakeMinimal\emsdk %configuration%
+  - EmscriptenBuildWin.bat c:\projects\EmscriptenCMakeMinimal\emsdk %configuration%
